@@ -1,101 +1,91 @@
-import Image from "next/image";
+'use client';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+import BingoGrid from './components/BingoGrid';
+import Navigation from './components/Navigation';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+// Exemple de données (à remplacer par vos vraies données)
+const participants = [
+  {
+    name: "Nicolas",
+    grid: [
+      "Doublé Ferrari (constructeur + pilote)",
+      "7 safety cars",
+      "Alpine + de point qu'Aston Martin",
+      "Dohan remplacé avant la trêve",
+      "Gasly gagne 1 grand prix",
+      "Double Ferrari a monza",
+      "Hadjar + de point que stroll",
+      "Norris ne finit pas sur le podium à la fin de la saison",
+      "Yuki par chez red bull dans l'année"
+    ]
+  },
+  {
+    name: "Théo",
+    grid: [
+      "Stroll a le plus de dnf de la saison",
+      "Charles + de points qu'hamilton",
+      "Aucun crash ocon gasly (contact direct)",
+      "Tout les rookie devant stroll classement général",
+      "Hamilton cède une place a charles",
+      "Tsunoda remplace Lawson",
+      "Max marque plus de point qu'Alpine",
+      "Double dnf Ferrari a monza",
+      "Fin d'un gp avec la moitié des participants en dnf"
+    ]
+  },
+  {
+    name: "Kilian",
+    grid: [
+      "Antonelli premier podium sur les 4 premières courses",
+      "Stroll pas + de 10 points",
+      "Combat de chien chez Ferrari",
+      "Conflit entre les pilotes Alpine",
+      "McLaren fait 10 livrées différentes",
+      "Williams top 5 écurie",
+      "CL16 crash à Monaco",
+      "Hamilton podium à Monza",
+      "Hadjar 1er Français de la saison"
+    ]
+  },
+  {
+    name: "Léo",
+    grid: [
+      "Deux pilotes font le même temps pour la pôle",
+      "Hamilton remercie toute l'équipe ferrari pour le travail acharné pour sa première victoire avant monaco",
+      "Hadjar fait au moins un top 5",
+      "Hadjar fini devant Yuki au championnat",
+      "Alpine casse au moins deux moteurs",
+      "Bortoleto ne marque pas de points",
+      "oscar remporte son go à domicile",
+      "Les trois premiers pilotes se battent pour le championnat jusque abu dhabi",
+      "ocon fait + 10 q3"
+    ]
+  }
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+    <main className="min-h-screen bg-gray-100 py-8">
+      <Navigation />
+      <Swiper
+        spaceBetween={30}
+        slidesPerView={1}
+        className="w-full"
+      >
+        {participants.map((participant, index) => (
+          <SwiperSlide key={index}>
+            <BingoGrid
+              participant={participant.name}
+              initialGrid={participant.grid}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </main>
   );
 }
