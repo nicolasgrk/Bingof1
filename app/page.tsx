@@ -65,6 +65,20 @@ const participants = [
       "Les trois premiers pilotes se battent pour le championnat jusque abu dhabi",
       "ocon fait + 10 q3"
     ]
+  },
+  {
+    name: "Elouan",
+    grid: [
+      "Lando fini devant max au championnat",
+      "Doghan se fait remplacer avant le GP8 par colapinto",
+      "5 ou + doublé Ferrari",
+      "Sauber n'inscrit pas un point",
+      "Lawson ça va être un flop",
+      "Mercedes fini 3 eme",
+      "Au moins 5 grand prix ou y a drapeau rouge dans les 3 premiers tours",
+      "Au moins 5 grand prix avec pas mal de pluie",
+      "Un pilote reçoit une pénalité pour avoir dépassé les limites de piste dans le dernier tour d'une course"
+    ]
   }
 ];
 
