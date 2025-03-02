@@ -38,7 +38,7 @@ export default function BingoGrid({ participant, initialGrid }: BingoGridProps) 
           >
             <div className="absolute inset-2">
               <div className="w-full h-full flex items-center justify-center">
-                <p className="text-xs sm:text-sm text-center font-medium leading-tight">
+                <p className="text-[10px] sm:text-xs md:text-sm text-center font-medium leading-tight break-words overflow-hidden">
                   {cell.content}
                 </p>
               </div>
