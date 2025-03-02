@@ -13,7 +13,9 @@ const nextConfig = {
 export default withPWA({
   dest: 'public',
   register: true,
-  workboxOptions: {
-    skipWaiting: true
+  disable: process.env.NODE_ENV === 'development',
+  workbox: {
+    skipWaiting: true,
+    clientsClaim: true
   }
 })(nextConfig);
