@@ -1,7 +1,19 @@
-import type { NextConfig } from "next";
+import withPWA from '@ducanh2912/next-pwa';
 
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  logging: {
+    fetches: {
+      fullUrl: false
+    }
+  }
 };
 
-export default nextConfig;
+export default withPWA({
+  dest: 'public',
+  register: true,
+  workboxOptions: {
+    skipWaiting: true
+  }
+})(nextConfig);
