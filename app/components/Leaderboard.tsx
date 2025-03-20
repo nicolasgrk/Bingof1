@@ -1,38 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { db } from '../db/db';
-
-interface PlayerScore {
-  participant: string;
-  validatedCount: number;
-}
+import { useRealtimeLeaderboard } from '../hooks/useRealtimeLeaderboard';
 
 export default function Leaderboard() {
-  const [scores, setScores] = useState<PlayerScore[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const loadScores = async () => {
-      try {
-        const allGrids = await db.bingoGrids.toArray();
-        const playerScores = allGrids.map(grid => ({
-          participant: grid.participant,
-          validatedCount: grid.cells.filter(cell => cell.state === 'validated').length
-        }));
-
-        // Trier par nombre de cases validées
-        const sortedScores = playerScores.sort((a, b) => b.validatedCount - a.validatedCount);
-        setScores(sortedScores);
-      } catch (error) {
-        console.error('Erreur lors du chargement des scores:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    loadScores();
-  }, []);
+  const { scores, isLoading } = useRealtimeLeaderboard();
 
   if (isLoading) {
     return (
