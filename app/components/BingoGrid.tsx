@@ -1,6 +1,6 @@
 'use client';
 
-import { useBingoGrid } from '../hooks/useBingoGrid';
+import { useRealtimeBingo } from '../hooks/useRealtimeBingo';
 
 interface BingoGridProps {
   participant: string;
@@ -8,7 +8,7 @@ interface BingoGridProps {
 }
 
 export default function BingoGrid({ participant, initialGrid }: BingoGridProps) {
-  const { grid, isLoading, updateCellState } = useBingoGrid(participant, initialGrid);
+  const { grid, isLoading, updateCellState } = useRealtimeBingo(participant, initialGrid);
 
   if (isLoading) {
     return (
